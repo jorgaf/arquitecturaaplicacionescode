@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Haciendo un post...</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <script src="js/libs/jquery/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+               $("#btnPost").click(function (e){
+                  $.ajax({
+                     url : "http://localhost:8080/demo/webresources/customer",
+                     type: 'POST',
+                     contentType: 'application/json',
+                     dataType: 'json',
+                     data: JSON.stringify({"addressline1": "Campus universitario","addressline2": "San Cayetano Alto","city": "Loja","creditLimit": 100000,"customerId": 1002,"discountCode": {"discountCode": "Y","rate": 0.00},"email": "info@utpl.edu.ec","fax": "305-555-0189","name": "Universidad Técnica de Loja","phone": "593-725-7027","state": "FL","zip": {"areaLength": 547.967,"areaWidth": 468.858,"radius": 755.778,"zipCode": "1101609"}}),
+                     success: function (data, textStatus, jqXHR) {
+                        alert("Datos almacenados correctamente");
+                    },
+                    error : function(xhr, statusText, error){
+                        alert("Tengo problemas para almacenar tus datos");
+                    }
+                  }); 
+               });
+               
+            });
+        </script>
+    </head>
+    <body>
+        <div><button id="btnPost">Post</button></div>
+    </body>
+</html>
